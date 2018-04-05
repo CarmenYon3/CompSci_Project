@@ -22,23 +22,40 @@ public class PlayerCharacterMove {
 		velocity.scl(1/dt);
 	}
 	
-	public void moveRight() {
-		velocity.x = MOVEMENT;
+	public Vector2 getPosition() {
+		return position;
 	}
 	
-	public void moveLeft() {
-		velocity.x = -MOVEMENT;
+	public void moveRight(boolean isPressed) {
+		if(isPressed)
+			velocity.x = MOVEMENT;
+		else
+			velocity.x = 0;
 	}
 	
-	public void moveDown() {
-		velocity.y = -MOVEMENT;
+	public void moveLeft(boolean isPressed) {
+		if(isPressed)
+			velocity.x = -MOVEMENT;
+		else
+			velocity.x = 0;
 	}
 	
-	public void moveUp() {
-		velocity.y = MOVEMENT;
+	public void moveDown(boolean isPressed) {
+		if(isPressed)
+			velocity.y = -MOVEMENT;
+		else
+			velocity.y = 0;	
+		}
+	
+	public void moveUp(boolean isPressed) {
+		if(isPressed)
+			velocity.y = MOVEMENT;
+		else
+			velocity.y = 0;	
 	}
 	
 	public Texture getTexture() {
 		return defaultTexture;
 	}
+	
 }
