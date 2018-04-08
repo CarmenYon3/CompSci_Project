@@ -4,8 +4,8 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.game.states.DialogueState;
 import com.mygdx.game.states.GameStateManager;
-import com.mygdx.game.states.WalkState;
 
 public class CompSciGame extends ApplicationAdapter {
 	public static final int WIDTH = 600;
@@ -20,7 +20,7 @@ public class CompSciGame extends ApplicationAdapter {
 	public void create () {
 		batch = new SpriteBatch();
 		gameStateManager = new GameStateManager();
-		gameStateManager.push(new WalkState(gameStateManager));
+		gameStateManager.push(new DialogueState(gameStateManager));
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 	}
 
