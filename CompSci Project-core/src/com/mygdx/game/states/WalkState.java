@@ -49,6 +49,7 @@ public class WalkState extends State{
 	public void update(float dt) {
 		// TODO Auto-generated method stub
 		handleInput();
+		
 		walker.update(dt);
 	}
 

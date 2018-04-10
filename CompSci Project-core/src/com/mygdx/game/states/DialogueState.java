@@ -40,7 +40,7 @@ public class DialogueState extends State{
 	public void render(SpriteBatch sb) {
 		// TODO Auto-generated method stub
 		sb.begin();
-		font.draw(sb,TEST[dialogueIndex],10,10);
+		font.draw(sb,TEST[dialogueIndex],100,100);
 		sb.end(); 
 	}
 

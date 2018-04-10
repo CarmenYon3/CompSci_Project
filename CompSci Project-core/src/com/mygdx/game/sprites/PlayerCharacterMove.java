@@ -2,6 +2,7 @@ package com.mygdx.game.sprites;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 public class PlayerCharacterMove {
@@ -10,6 +11,8 @@ public class PlayerCharacterMove {
 	private Vector2 position;
 	private Vector2 velocity;
 	private Animation test;
+	private Rectangle bounds;
+	private boolean colliding;
 	
 	private int[][] arr;
 	
@@ -20,16 +23,30 @@ public class PlayerCharacterMove {
 		position = new Vector2(x,y);
 		velocity = new Vector2(0,0);
 		test = new Animation(new TextureRegion(new Texture("spriteSheetTest.png")),6,0.5f,arr);
+		bounds = new Rectangle(x, y, test.getFrame().getRegionWidth(), test.getFrame().getRegionHeight());
 		movement = m;
 		test.setAnimation(0);
 	}
 	
 	public void update(float dt) {
+		updateBounds();
 		velocity.scl(dt);
 		position.add(velocity.x,velocity.y);
 		test.update(dt);
 		velocity.scl(1/dt);
 	}
+	
+	public boolean getColliding() {
+		return colliding;
+	}
+	
+	public void setColliding(boolean b ) {
+		colliding = b;
+	}
+	
+	public void updateBounds(){
+        bounds.setPosition(position.x, position.y);
+    }
 	
 	public int getMovement() {
 		return movement;
