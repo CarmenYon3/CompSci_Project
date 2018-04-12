@@ -4,14 +4,21 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Timer;
+import com.mygdx.game.sprites.NonPlayerCharacter;
 import com.mygdx.game.sprites.PlayerCharacterMove;
 
 public class WalkState extends State{
 	private PlayerCharacterMove walker;
+	private NonPlayerCharacter npcBasic;
+	private Timer time;
 	
 	public WalkState(GameStateManager gsm) {
 		super(gsm);
 		walker = new PlayerCharacterMove(100,100,200);
+		npcBasic = new NonPlayerCharacter(200,200);
+		npcBasic.setAnimation(0);
+		time = new Timer();
 	}
 	
 	protected void handleInput() {
@@ -50,14 +57,22 @@ public class WalkState extends State{
 		// TODO Auto-generated method stub
 		handleInput();
 		
+		if(npcBasic.collides(walker.getBounds()) && Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+			gsm.push(new DialogueState(gsm));
+			time.delay(1000);
+		}
+		
+		
 		walker.update(dt);
+		npcBasic.update(dt);
 	}
 
 	
 	public void render(SpriteBatch sb) {
 		// TODO Auto-generated method stub
 		sb.begin();
-		sb.draw(walker.getTexture(), walker.getPosition().x, walker.getPosition().y,100,100);
+		sb.draw(walker.getTexture(), walker.getPosition().x, walker.getPosition().y);
+		sb.draw(npcBasic.getTexture(), npcBasic.getPosition().x, npcBasic.getPosition().y );
 		sb.end();
 	}
 

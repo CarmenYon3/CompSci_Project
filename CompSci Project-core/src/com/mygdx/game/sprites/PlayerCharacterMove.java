@@ -12,17 +12,17 @@ public class PlayerCharacterMove {
 	private Vector2 velocity;
 	private Animation test;
 	private Rectangle bounds;
-	private boolean colliding;
 	
 	private int[][] arr;
 	
 	public PlayerCharacterMove(int x, int y,int m) {
 		arr = new int[][]{
-			{0,1,2},{3,4,5}
+			{2},
+			{0,1,2,3,4,5,6,7}
 		};
 		position = new Vector2(x,y);
 		velocity = new Vector2(0,0);
-		test = new Animation(new TextureRegion(new Texture("spriteSheetTest.png")),6,0.5f,arr);
+		test = new Animation(new TextureRegion(new Texture("New_Piskel_2.png")),8,0.5f,arr);
 		bounds = new Rectangle(x, y, test.getFrame().getRegionWidth(), test.getFrame().getRegionHeight());
 		movement = m;
 		test.setAnimation(0);
@@ -36,17 +36,14 @@ public class PlayerCharacterMove {
 		velocity.scl(1/dt);
 	}
 	
-	public boolean getColliding() {
-		return colliding;
-	}
-	
-	public void setColliding(boolean b ) {
-		colliding = b;
-	}
 	
 	public void updateBounds(){
         bounds.setPosition(position.x, position.y);
     }
+	
+	public Rectangle getBounds() {
+		return bounds;
+	}
 	
 	public int getMovement() {
 		return movement;
@@ -54,6 +51,10 @@ public class PlayerCharacterMove {
 	
 	public Vector2 getPosition() {
 		return position;
+	}
+	
+	public void setPosition(Vector2 position) {
+		this.position = position; 
 	}
 	
 	public Vector2 getVelocity() {

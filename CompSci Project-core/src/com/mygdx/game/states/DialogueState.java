@@ -15,18 +15,22 @@ public class DialogueState extends State{
 	};
 	private int dialogueIndex;
 	private BitmapFont font;
+	private boolean isDone;
 	
 	public DialogueState(GameStateManager gsm) {
 		super(gsm);
 		font = new BitmapFont();
+		isDone = false;
 	}
 	
 	@Override
 	protected void handleInput() {
-		// TODO Auto-generated method stub
-		if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)){
-			dialogueIndex++;
-		}
+		// TODO Auto-generated method stub		
+			if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE) && dialogueIndex < TEST.length-1)
+				dialogueIndex++;
+			if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE) && dialogueIndex == TEST.length - 1)
+				gsm.pop();
+				
 	}
 
 	@Override
@@ -42,6 +46,10 @@ public class DialogueState extends State{
 		sb.begin();
 		font.draw(sb,TEST[dialogueIndex],100,100);
 		sb.end(); 
+	}
+	
+	public boolean getIsDone() {
+		return isDone;
 	}
 
 }

@@ -21,6 +21,7 @@ public class CompSciGame extends ApplicationAdapter {
 	public void create () {
 		batch = new SpriteBatch();
 		gameStateManager = new GameStateManager();
+		gameStateManager.push(new WalkState(gameStateManager));
 		gameStateManager.push(new DialogueState(gameStateManager));
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 	}
