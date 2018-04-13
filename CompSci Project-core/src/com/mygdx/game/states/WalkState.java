@@ -26,21 +26,21 @@ public class WalkState extends State{
 		int mov = walker.getMovement();
 		vel.set(new Vector2(0,0));
 		
-		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)) { 
+		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT) && walker.getPosition().x + walker.getTexture().getRegionWidth() < Gdx.graphics.getWidth()) { 
 			vel.add(mov,0);
 			walker.setAnimation(1);
 		}
 		
-		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)  && walker.getPosition().x > 0) {
 			vel.add(-mov,0);
 			walker.setAnimation(1);
 		}
-		if(Gdx.input.isKeyPressed(Input.Keys.UP)) { 
+		if(Gdx.input.isKeyPressed(Input.Keys.UP)  && walker.getPosition().y + walker.getTexture().getRegionHeight() < Gdx.graphics.getHeight()) { 
 			vel.add(0,mov);
 			walker.setAnimation(1);
 		}
 		
-		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)) { 
+		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)  && walker.getPosition().y  > 0) { 
 			vel.add(0,-mov);
 			walker.setAnimation(1);
 		}

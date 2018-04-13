@@ -67,4 +67,6 @@ public class PlayerCharacterMove {
 	public void setAnimation(int index) {
 		test.setAnimation(index);
 	}
+	
+	
 }
