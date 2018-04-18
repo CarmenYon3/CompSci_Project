@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
-public class NonPlayerCharacter {
+public class NonPlayerCharacterWalk {
 
 	private Animation test;
 	private Rectangle bounds;
@@ -13,7 +13,7 @@ public class NonPlayerCharacter {
 	private Vector2 position;
 	
 	
-	public NonPlayerCharacter(int x, int y) {
+	public NonPlayerCharacterWalk(int x, int y) {
 		arr = new int[][]{
 			{0,1,2,3,4,5}
 		};

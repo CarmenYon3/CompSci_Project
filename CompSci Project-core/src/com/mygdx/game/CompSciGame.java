@@ -4,7 +4,8 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.mygdx.game.states.DialogueState;
+import com.mygdx.game.sprites.CrushFight;
+import com.mygdx.game.states.FightingState;
 import com.mygdx.game.states.GameStateManager;
 import com.mygdx.game.states.WalkState;
 
@@ -22,7 +23,7 @@ public class CompSciGame extends ApplicationAdapter {
 		batch = new SpriteBatch();
 		gameStateManager = new GameStateManager();
 		gameStateManager.push(new WalkState(gameStateManager));
-		gameStateManager.push(new DialogueState(gameStateManager));
+		gameStateManager.push(new FightingState(gameStateManager,new CrushFight(10,10)));
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 	}
 
