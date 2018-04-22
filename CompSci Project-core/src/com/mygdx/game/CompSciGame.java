@@ -23,7 +23,10 @@ public class CompSciGame extends ApplicationAdapter {
 		batch = new SpriteBatch();
 		gameStateManager = new GameStateManager();
 		gameStateManager.push(new WalkState(gameStateManager));
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/master
 		gameStateManager.push(new FightingState(gameStateManager,new CrushFight(10,10)));
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 	}

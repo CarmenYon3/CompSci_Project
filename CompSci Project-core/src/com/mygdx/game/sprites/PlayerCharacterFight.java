@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class PlayerCharacterFight {
 	private Animation silouette;
+<<<<<<< HEAD
 	private int[][] animArr;
 	private String[] movesArr;
 	public boolean attacking;
@@ -42,4 +43,22 @@ public class PlayerCharacterFight {
 		}
 		
 		
+=======
+	private int[][] arr;
+	
+	public PlayerCharacterFight() {
+		arr = new int[][]{
+			{0,1,2,3}
+		};
+		silouette = new Animation(new TextureRegion(new Texture("playerSilouette.png")),4,0.5f,arr);
+	}
+	
+		public void update(float dt) {
+			silouette.update(dt);
+		}
+		
+		public TextureRegion getTexture() {
+			return silouette.getFrame();
+		}
+>>>>>>> refs/remotes/origin/master
 }
