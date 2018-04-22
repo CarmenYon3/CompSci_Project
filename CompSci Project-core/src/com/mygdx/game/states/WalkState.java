@@ -5,18 +5,18 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Timer;
-import com.mygdx.game.sprites.NonPlayerCharacter;
+import com.mygdx.game.sprites.NonPlayerCharacterWalk;
 import com.mygdx.game.sprites.PlayerCharacterMove;
 
 public class WalkState extends State{
 	private PlayerCharacterMove walker;
-	private NonPlayerCharacter npcBasic;
+	private NonPlayerCharacterWalk npcBasic;
 	private Timer time;
 	
 	public WalkState(GameStateManager gsm) {
 		super(gsm);
 		walker = new PlayerCharacterMove(100,100,200);
-		npcBasic = new NonPlayerCharacter(200,200);
+		npcBasic = new NonPlayerCharacterWalk(200,200);
 		npcBasic.setAnimation(0);
 		time = new Timer();
 	}
