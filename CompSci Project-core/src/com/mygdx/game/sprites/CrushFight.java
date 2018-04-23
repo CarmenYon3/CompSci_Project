@@ -7,7 +7,7 @@ public class CrushFight extends Enemy{
 	private Animation silouette;
 	private int[][] arr;
 	
-	public CrushFight(int h, int d) {
+	public CrushFight(int h, int d, int aM) {
 		super(h,d);
 		arr = new int[][]{
 			{0,1,2,3}
