@@ -16,6 +16,7 @@ public class FightingState extends State {
 	boolean yourTurn;
 	int[] colors;
 	private BitmapFont font;
+	private int die;
 	
 	public FightingState(GameStateManager gsm, Enemy enemy) {
 		super(gsm);
@@ -25,6 +26,7 @@ public class FightingState extends State {
 		yourTurn = true;
 		colors = new int[]{0,0,0,0};
 		font = new BitmapFont();
+		die = 0;
 	}
 	
 	@Override
@@ -44,7 +46,7 @@ public class FightingState extends State {
 		}
 		
 		if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && yourTurn) {
-			attack(enemy);
+			attack(fighter.getMoves()[movesIndex]);
 		}
 	}
 
@@ -62,22 +64,25 @@ public class FightingState extends State {
 			sb.begin();
 			sb.draw(fighter.getTexture(), 0, 0,250,250);
 			sb.draw(enemy.getTexture(),300,150,250,250);
-			font.draw(sb, fighter.getMoves()[movesIndex].getName(), 350, 100);
-			font.draw(sb,"Select Your Move:", 350, 125);
+			font.draw(sb, fighter.getMoves()[movesIndex].getName(), 300, 100);
+			font.draw(sb,"Select Your Move:", 300, 125);
 			font.draw(sb, "Your Health: " + fighter.getHealth(),150,50);
-			font.draw(sb, "dammage done to enemy: " + fighter.getMoves()[movesIndex].getTargetDammage(),400,100);
-			font.draw(sb, "dammage done to yourself: " + fighter.getMoves()[movesIndex].getPlayerDammage(),400,85);
-			font.draw(sb, "enemy attack dammage: " + fighter.getMoves()[movesIndex].getTargetAttack(),400,70);
+			font.draw(sb, "Enemt Health: " + enemy.getHealth(),300,300);
+			font.draw(sb, "dammage done to enemy: " + fighter.getMoves()[movesIndex].getTargetDammage() + " * " + fighter.getDammage(),350,100);
+			font.draw(sb, "dammage done to yourself: " + fighter.getMoves()[movesIndex].getPlayerDammage(),350,85);
+			font.draw(sb, "enemy attack dammage: " + fighter.getMoves()[movesIndex].getTargetAttack(),350,70);
+			font.draw(sb, "enemy used " + fighter.getHealth(),150,50);
 			sb.end();
 	}
 	
 	private void attack(Move move) {
-			enemy.setHealth(enemy.getHealth() - (move.getTargetDammage() * fighter.getDammage()));
+			enemy.setHealth( (int) (enemy.getHealth() - (move.getTargetDammage() * fighter.getDammage())));
 			enemy.setDammage(enemy.getDammage() - move.getTargetDammage());
 			fighter.setHealth(fighter.getHealth()-move.getPlayerDammage());
+			
 		}
 	
 	private void takeDammage(Move move) {
-		fighter.setHealth(move.get);
+		fighter.setHealth(fighter.getHealth() - move.getPlayerDammage());
 	}
 }

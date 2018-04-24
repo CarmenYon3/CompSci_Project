@@ -10,7 +10,7 @@ public class PlayerCharacterFight {
 	private Move[] movesArr;
 	public boolean attacking;
 	int health;
-	int dammage;
+	double dammage;
 	
 	public PlayerCharacterFight() {
 		animArr = new int[][]{
@@ -24,6 +24,7 @@ public class PlayerCharacterFight {
 		
 		silouette = new Animation(new TextureRegion(new Texture("playerSilouette.png")),4,0.5f,animArr);
 		health = 20;
+		dammage = 1.25;
 	}
 	
 	
@@ -48,7 +49,7 @@ public class PlayerCharacterFight {
 			health -= n;
 		}
 		
-		public int getDammage() {
+		public double getDammage() {
 			return dammage;
 		}
 		
